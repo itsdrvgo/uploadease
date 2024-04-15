@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS "org_template_idx" ON "templates" ("org_id");
