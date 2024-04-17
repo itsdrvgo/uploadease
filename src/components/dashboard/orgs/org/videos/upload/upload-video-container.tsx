@@ -2,6 +2,7 @@
 
 import { Icons } from "@/components/icons/icons";
 import { Button } from "@/components/ui/button";
+import Player from "@/components/ui/player";
 import { useVideoStore } from "@/lib/store/video";
 import { cn, isFileTypePermitted } from "@/lib/utils";
 import { GenericProps, UploadEvent } from "@/types";
@@ -92,14 +93,13 @@ function UploadVideoContainer({ className, ...props }: GenericProps) {
 
             {video && (
                 <div className="w-full space-y-5">
-                    <video
-                        className="aspect-video size-full rounded-xl"
-                        controls
-                        preload="none"
-                    >
-                        <source src={video.url} type={video.file.type} />
-                        Your browser does not support the video tag.
-                    </video>
+                    <Player
+                        source={{
+                            type: "default",
+                            url: video.url,
+                        }}
+                        className="overflow-hidden rounded-xl"
+                    />
 
                     <div className="flex justify-end">
                         <Button size="sm" onClick={handleVideoChange}>
